@@ -1,7 +1,9 @@
 {
-  "extends": "@eiog/ts-config/tsconfig.json",
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@oiij/tsconfig/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "moduleResolution": "bundler",
     "paths": {
       "~/*": [
         "src/*"
@@ -14,11 +16,18 @@
       "vitest/globals",
       "@dcloudio/types",
       "unplugin-icons/types/vue",
-      "@uni-helper/uni-app-types",
-      "@intlify/unplugin-vue-i18n/messages",
+      "@uni-helper/uni-types",
+      "@uni-helper/vite-plugin-uni-pages",
       "wot-design-uni/global.d.ts",
-      "nutui-uniapp/global.d.ts"
+      "nutui-uniapp/global.d.ts",
+      "uni-echarts/global"
+    ],
+    "plugins": [
+      { "name": "@dxup/unimport" }
     ]
+  },
+  "vueCompilerOptions": {
+    "plugins": ["@uni-helper/uni-types/volar-plugin"]
   },
   "include": [
     "*.d.ts",
@@ -28,7 +37,7 @@
   ],
   "exclude": [
     "node_modules/**",
-    "**/uni_modules/**",
+    "src/uni_modules",
     "dist"
   ]
 

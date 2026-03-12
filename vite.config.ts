@@ -5,16 +5,14 @@ import uniModule from '@dcloudio/vite-plugin-uni'
 import UniHelperLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniHelperManifest from '@uni-helper/vite-plugin-uni-manifest'
 import UniHelperPages from '@uni-helper/vite-plugin-uni-pages'
+import UniPlatformModifier from '@uni-helper/vite-plugin-uni-platform-modifier'
 import postcssPresetEnv from 'postcss-preset-env'
 import px2rpx from 'postcss-pxtorpx-pro'
+import { UniEcharts } from 'uni-echarts/vite'
 import Unocss from 'unocss/vite'
 import Icons from 'unplugin-icons/vite'
 import { defineConfig, loadEnv } from 'vite'
-import { VitePluginAutoImport, VitePluginComponents, VitePluginI18n } from './config'
-import { VitePluginMock } from './plugin/vite-plugin-mock'
-import { VitePluginUniVueUsePolyfill } from './plugin/vite-plugin-uni-vueuse-polyfill'
-// https://uni-helper.js.org/uni-use
-// https://uni-helper.js.org/axios-adapter
+import { AutoImport, Components } from './plugins'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const { VITE_DEV_PORT, VITE_API_BASE_PREFIX, VITE_API_BASE_URL, VITE_BASE } = loadEnv(mode, process.cwd(), '')
@@ -24,18 +22,18 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [
       UniHelperManifest(), // https://uni-helper.js.org/vite-plugin-uni-manifest
-      UniHelperPages(), // https://uni-helper.js.org/vite-plugin-uni-pages
+      UniHelperPages({
+        exclude: ['**/components/**/*.*'],
+      }), // https://uni-helper.js.org/vite-plugin-uni-pages
       UniHelperLayouts(), // https://uni-helper.js.org/vite-plugin-uni-layouts
-
-      // UniMiddleware(), // https://uni-helper.js.org/vite-plugin-uni-middleware
       Unocss(),
       Icons({ compiler: 'vue3' }),
-      VitePluginMock({ prefix: VITE_API_BASE_PREFIX }),
-      ...VitePluginAutoImport(),
-      ...VitePluginComponents(),
-      ...process.env.UNI_PLATFORM === 'h5' ? VitePluginI18n() : [],
+      AutoImport,
+      Components,
       Uni(),
-      VitePluginUniVueUsePolyfill(),
+      UniPlatformModifier(),
+      UniEcharts(),
+
     ],
     clearScreen: true,
     base: VITE_BASE ?? '/',

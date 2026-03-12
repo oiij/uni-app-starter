@@ -4,11 +4,11 @@ const { isDark } = useTheme()
 
 <template>
   <div :class="isDark ? 'dark' : 'light'">
-    <NutUiProvider>
-      <WdUiProvider>
+    <WdUiProvider>
+      <NutUiProvider>
         <slot />
-      </WdUiProvider>
-    </NutUiProvider>
+      </NutUiProvider>
+    </WdUiProvider>
   </div>
 </template>
 

@@ -1,20 +1,22 @@
-import type { UnConfig, UnError, UnInstance, UnResponse } from '@uni-helper/uni-network'
+import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import process from 'node:process'
-import un from '@uni-helper/uni-network'
+import { createUniAppAxiosAdapter } from '@uni-helper/axios-adapter'
+import axios from 'axios'
 
-let basePrefix = import.meta.env.VITE_API_BASE_PREFIX || ''
+let API_BASE_PREFIX = import.meta.env.VITE_API_BASE_PREFIX || ''
 // #ifndef H5
 if (process.env.NODE_ENV === 'development')
-  basePrefix = import.meta.env.VITE_API_BASE_URL_DEV || ''
+  API_BASE_PREFIX = import.meta.env.VITE_API_BASE_URL_DEV || ''
 else
-  basePrefix = import.meta.env.VITE_API_BASE_URL || ''
+  API_BASE_PREFIX = import.meta.env.VITE_API_BASE_URL || ''
 
 // #endif
 
 // 创建实例
-const instance: UnInstance = un.create({
+export const axiosInstance = axios.create({
+  adapter: createUniAppAxiosAdapter(),
   // 前缀
-  baseUrl: basePrefix,
+  baseURL: API_BASE_PREFIX,
   // 超时
   timeout: 1000 * 30,
   // 请求头
@@ -23,38 +25,38 @@ const instance: UnInstance = un.create({
   },
 })
 // 请求拦截器
-instance.interceptors.request.use(
-  (config: UnConfig) => {
+axiosInstance.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
     // TODO 在这里可以加上想要在请求发送前处理的逻辑
     // TODO 比如 loading 等
     return config
   },
-  (error: UnError) => {
+  (error: AxiosError) => {
     return Promise.reject(error)
   },
 )
 
 // 响应拦截器
-instance.interceptors.response.use(
-  (response: UnResponse<any>) => {
+axiosInstance.interceptors.response.use(
+  (response: AxiosResponse) => {
     if (response.status === 200)
       return response.data
 
     return Promise.reject(response.data)
   },
-  (error: UnError) => {
+  (error: AxiosError) => {
     return Promise.reject(error)
   },
 )
 
 export function get<RES = any, REQ = object>(path: string, data?: REQ): Promise<RES> {
-  return instance(path, {
+  return axiosInstance(path, {
     method: 'get',
-    params: data as any,
+    params: data,
   })
 }
 export function post<RES extends string | object>(path: string, data?: Record<string, any>): Promise<RES> {
-  return instance(path, {
+  return axiosInstance(path, {
     method: 'post',
     data,
   })

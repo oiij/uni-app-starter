@@ -1,16 +1,13 @@
 <script setup lang='ts'>
-const { theme, loading, toastRef, notifyRef, notifyEv, dialogRef, dialogEv, actionSheetProps, actionSheetEv } = useNutUI()
+const { theme } = useTheme()
 </script>
 
 <template>
-  <nut-config-provider :theme="theme">
-    <nut-loading-page :loading="loading" />
-    <nut-toast ref="toastRef" />
-    <nut-notify ref="notifyRef" @click="notifyEv.click" @closed="notifyEv.closed" />
-    <nut-dialog ref="dialogRef" @ok="dialogEv.ok" @cancel="dialogEv.cancel" @closed="dialogEv.closed" @opened="dialogEv.opened" />
-    <nut-action-sheet v-bind="actionSheetProps" v-model:visible="actionSheetProps.visible" @choose="actionSheetEv.choose" @cancel="actionSheetEv.cancel" @close="actionSheetEv.close" />
+  <NutConfigProvider :theme="theme">
+    <NutToast />
+    <NutNotify />
     <slot />
-  </nut-config-provider>
+  </NutConfigProvider>
 </template>
 
 <style scoped lang='less'>

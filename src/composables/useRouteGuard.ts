@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import type { Router } from 'uni-mini-router'
 
 export function useRouteGuard(router: Router) {
-  router.beforeEach((to, from, next) => {
-    next()
+  router.beforeEach((_to, from) => {
+    console.log('beforeEach', _to, from)
   })
-  router.afterEach(() => {
-
+  router.afterEach((_to, from) => {
+    console.log('afterEach', _to, from)
   })
 }

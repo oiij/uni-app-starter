@@ -1,13 +1,17 @@
 <!-- eslint-disable no-console -->
 <script setup lang="ts">
-import type { ECOption } from '~/composables/useEcharts'
-import LEchart from '~uni/lime-echart_0.9.9/components/l-echart/l-echart.vue'
+import UniEcharts from 'uni-echarts'
+import 'echarts'
 
-console.log(getCurrentPages())
+definePage({
+  layout: false,
+  style: {
+    navigationStyle: 'default',
+    navigationBarTitleText: 'ECharts',
+  },
+})
 
-const { toast } = useNutUI()
-const { isDark } = useTheme()
-const options = ref<ECOption>({
+const options = ref({
   tooltip: {
     trigger: 'item',
   },
@@ -54,97 +58,11 @@ const options = ref<ECOption>({
     },
   ],
 })
-const { domRef } = useEcharts(options, isDark, (e) => {
-  e.on('click', ({ data }: any) => {
-    console.log(data)
-
-    toast.text(data.name)
-  })
-})
-const size = ref({
-  width: 375,
-  height: 400,
-})
-function changeSize() {
-  size.value.width = 200
-  size.value.height = 200
-  domRef.value?.resize()
-}
-function changeData() {
-  options.value = {
-    tooltip: {
-      trigger: 'item',
-    },
-    legend: {
-      top: '5%',
-      left: 'center',
-    },
-    title: {
-      text: ``,
-      left: 'center',
-    },
-    series: [
-      {
-        name: ``,
-        type: 'pie',
-        top: 'center',
-        radius: ['20%', '80%'],
-        avoidLabelOverlap: false,
-        itemStyle: {
-          borderRadius: 10,
-          borderColor: '#fff',
-          borderWidth: 2,
-        },
-        label: {
-          show: true,
-          position: 'outside',
-          formatter: '{b}:{c}元\n{d}%',
-        },
-        emphasis: {
-          label: {
-            show: true,
-            fontSize: 30,
-            fontWeight: 'bold',
-          },
-        },
-        labelLine: {
-          show: true,
-        },
-        data: [
-          { value: 100, name: 'AAA' },
-          { value: 200, name: 'BBB' },
-          { value: 300, name: 'CCC' },
-          { value: 300, name: 'DDD' },
-          { value: 300, name: 'EEE' },
-        ],
-      },
-    ],
-  }
-}
 </script>
 
 <template>
-  <div class="h-[100vh] w-full flex-col items-center dark:bg-black">
-    <div :style="{ width: `${size.width}px`, height: `${size.height}px` }">
-      <LEchart ref="domRef" />
-    </div>
-    <div class="flex-col">
-      <uni-tag text="标签" />
-      <button @click="changeSize">
-        ChangeSize
-      </button>
-      <button @click="changeData">
-        ChangeData
-      </button>
-    </div>
-  </div>
+  <UniEcharts custom-class="w-full h-100vh" :option="options" />
 </template>
 
 <style scoped lang="less">
 </style>
-
-<route lang="yaml">
-  layout: false
-  style:
-    navigationStyle: "custom"
-</route>
