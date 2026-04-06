@@ -1,22 +1,16 @@
 import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
-import process from 'node:process'
 import { createUniAppAxiosAdapter } from '@uni-helper/axios-adapter'
 import axios from 'axios'
 
-let API_BASE_PREFIX = import.meta.env.VITE_API_BASE_PREFIX || ''
-// #ifndef H5
-if (process.env.NODE_ENV === 'development')
-  API_BASE_PREFIX = import.meta.env.VITE_API_BASE_URL_DEV || ''
-else
-  API_BASE_PREFIX = import.meta.env.VITE_API_BASE_URL || ''
-
-// #endif
+const RELEASE_API_BASE_PREFIX = 'https://sys1.lfqqd.com/index.php/staff/api/index'
+const DEV_API_BASE_PREFIX = 'http://tk.lfqqd.com/index.php/staff/api/index'
+const { envVersion } = uni.getAccountInfoSync().miniProgram
 
 // 创建实例
 export const axiosInstance = axios.create({
   adapter: createUniAppAxiosAdapter(),
   // 前缀
-  baseURL: API_BASE_PREFIX,
+  baseURL: envVersion === 'release' ? RELEASE_API_BASE_PREFIX : DEV_API_BASE_PREFIX,
   // 超时
   timeout: 1000 * 30,
   // 请求头

@@ -14,7 +14,7 @@ export default AutoImport({
     'vue-i18n',
     { from: 'await-to-js', imports: ['to'] },
     {
-      from: 'uni-mini-router',
+      from: '@wot-ui/router',
       imports: ['createRouter', 'useRouter', 'useRoute'],
     },
   ],

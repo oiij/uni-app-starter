@@ -33,6 +33,9 @@ function navigationToSubPage() {
       <NutCell title="wdNotify" clickable @click="() => nutNotify.success('NutUI Notify', { position: 'bottom' })" />
       <NutCell title="SubPage" clickable @click="() => navigationToSubPage()" />
     </NutCellGroup>
+    <div class="flex-col">
+      <TButton>Click me</TButton>
+    </div>
   </div>
 </template>
 

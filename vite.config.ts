@@ -12,10 +12,10 @@ import { UniEcharts } from 'uni-echarts/vite'
 import Unocss from 'unocss/vite'
 import Icons from 'unplugin-icons/vite'
 import { defineConfig, loadEnv } from 'vite'
-import { AutoImport, Components } from './plugins'
+import { AutoImport, Components, UniVueUsePolyfill } from './plugins'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
-  const { VITE_DEV_PORT, VITE_API_BASE_PREFIX, VITE_API_BASE_URL, VITE_BASE } = loadEnv(mode, process.cwd(), '')
+  const { VITE_DEV_PORT, VITE_API_BASE_PREFIX, VITE_API_BASE_URL } = loadEnv(mode, process.cwd(), '')
   // eslint-disable-next-line ts/ban-ts-comment
   // @ts-expect-error
   const Uni = uniModule.default || uniModule
@@ -30,22 +30,13 @@ export default defineConfig(({ mode }) => {
       Icons({ compiler: 'vue3' }),
       AutoImport,
       Components,
+      UniVueUsePolyfill,
       Uni(),
       UniPlatformModifier(),
       UniEcharts(),
 
     ],
     clearScreen: true,
-    base: VITE_BASE ?? '/',
-    build: {
-      sourcemap: false,
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          directives: false,
-        },
-      },
-    },
     optimizeDeps: {
       exclude: process.env.UNI_PLATFORM === 'h5' && process.env.NODE_ENV === 'development' ? ['wot-design-uni'] : [],
     },

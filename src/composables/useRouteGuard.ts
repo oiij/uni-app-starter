@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import type { Router } from 'uni-mini-router'
+import type { Router } from '@wot-ui/router'
 
 export function useRouteGuard(router: Router) {
   router.beforeEach((_to, from) => {
