@@ -1,16 +1,27 @@
+import type { ComponentResolver } from '@uni-helper/vite-plugin-uni-components'
 // https://github.com/antfu/unplugin-vue-components
-import Components from '@uni-helper/vite-plugin-uni-components'
-import { TDesignUniappResolver, WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
-import { NutResolver } from 'nutui-uniapp'
+import Components, { kebabCase } from '@uni-helper/vite-plugin-uni-components'
 
+export function WotResolver(): ComponentResolver {
+  return {
+    type: 'component',
+    resolve: (name: string) => {
+      if (/^Wd[A-Z]/.test(name)) {
+        const compName = kebabCase(name)
+        return {
+          name,
+          from: `@wot-ui/ui/components/${compName}/${compName}.vue`,
+        }
+      }
+    },
+  }
+}
 export default Components({
   dirs: ['src/components'],
   extensions: ['vue'],
   deep: true,
   include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
   resolvers: [
-    NutResolver(),
     WotResolver(),
-    TDesignUniappResolver(),
   ],
 })

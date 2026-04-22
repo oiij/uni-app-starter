@@ -1,5 +1,6 @@
 import { oiijPreset } from '@oiij/unocss-preset'
 import { presetUni } from '@uni-helper/unocss-preset-uni'
+import { presetWot } from '@wot-ui/unocss-preset'
 import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWebFonts, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 export default defineConfig({
@@ -34,6 +35,7 @@ export default defineConfig({
     }),
 
     oiijPreset(),
+    presetWot(),
   ],
   transformers: [
     transformerDirectives(),

@@ -2,14 +2,10 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@oiij/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "moduleResolution": "bundler",
     "paths": {
       "~/*": [
-        "src/*"
-      ],
-      "~uni/*": [
-        "src/uni_modules/*"
+        "./src/*"
       ]
     },
     "types": [
@@ -19,7 +15,7 @@
       "@uni-helper/uni-types",
       "@uni-helper/vite-plugin-uni-pages",
       "uni-echarts/global",
-      "@tdesign/uniapp/global"
+      "@wot-ui/ui/global"
     ],
     "noUnusedLocals": false,
     "noUnusedParameters": false,
@@ -39,9 +35,8 @@
     "src/**/*.vue"
   ],
   "exclude": [
-    "**/node_modules/**",
-    "**/src/uni_modules/**",
-    "**/dist/**"
+    "node_modules",
+    "dist"
   ]
 
 }

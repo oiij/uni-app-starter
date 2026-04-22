@@ -11,7 +11,6 @@ export default AutoImport({
     '@vueuse/core',
     'uni-app',
     'pinia',
-    'vue-i18n',
     { from: 'await-to-js', imports: ['to'] },
     {
       from: '@wot-ui/router',

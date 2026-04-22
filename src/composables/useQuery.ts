@@ -1,8 +1,22 @@
-export function useQuery(key?: MaybeRefOrGetter<string>) {
-  const query = ref<AnyObject>({})
+export function useQuery<T, Q = any>(key?: string, defaultValue?: T) {
+  const query = ref<Q>({} as Q)
+  const value = ref<T | undefined>(defaultValue)
+  const onQueryEvent = createEventHook<[T, Q]>()
+  const onLoadEvent = createEventHook<[Q]>()
   onLoad((q) => {
-    query.value = q ?? {}
+    if (q) {
+      onLoadEvent.trigger(q as Q)
+      query.value = q ?? {}
+      if (q && key && q[key]) {
+        value.value = decodeURIComponent(q[key])
+        onQueryEvent.trigger(value.value, query.value)
+      }
+    }
   })
-  const value = computed(() => (key ? query.value[toValue(key)] : null))
-  return { query, value }
+  return {
+    query,
+    value,
+    onQuery: onQueryEvent.on,
+    onLoad: onLoadEvent.on,
+  }
 }

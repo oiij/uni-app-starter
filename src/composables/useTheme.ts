@@ -29,6 +29,7 @@ function toggle() {
 }
 const statusBarHeight = ref(0)
 const customBarHeight = ref(44)
+const safeAreaHeight = computed(() => statusBarHeight.value + customBarHeight.value)
 const menuButtonBounding = ref<UniNamespace.GetMenuButtonBoundingClientRectRes>()
 const windowInfo = ref<UniNamespace.GetWindowInfoResult>()
 // #ifdef MP-WEIXIN
@@ -59,6 +60,7 @@ export function useTheme() {
     toggle,
     statusBarHeight,
     customBarHeight,
+    safeAreaHeight,
     menuButtonBounding,
     windowInfo,
   }

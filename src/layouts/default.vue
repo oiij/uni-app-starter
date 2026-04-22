@@ -5,9 +5,7 @@ const { isDark } = useTheme()
 <template>
   <div :class="isDark ? 'dark' : 'light'">
     <WdUiProvider>
-      <NutUiProvider>
-        <slot />
-      </NutUiProvider>
+      <slot />
     </WdUiProvider>
   </div>
 </template>

@@ -4,9 +4,6 @@ const { theme } = useTheme()
 
 <template>
   <WdConfigProvider :theme="theme">
-    <WdToast />
-    <WdNotify />
-    <WdMessageBox />
     <slot />
   </WdConfigProvider>
 </template>

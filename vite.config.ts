@@ -12,7 +12,9 @@ import { UniEcharts } from 'uni-echarts/vite'
 import Unocss from 'unocss/vite'
 import Icons from 'unplugin-icons/vite'
 import { defineConfig, loadEnv } from 'vite'
-import { AutoImport, Components, UniVueUsePolyfill } from './plugins'
+import UniPolyfill from 'vite-plugin-uni-polyfill'
+import { AutoImport, Components } from './plugins'
+
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const { VITE_DEV_PORT, VITE_API_BASE_PREFIX, VITE_API_BASE_URL } = loadEnv(mode, process.cwd(), '')
@@ -28,18 +30,14 @@ export default defineConfig(({ mode }) => {
       UniHelperLayouts(), // https://uni-helper.js.org/vite-plugin-uni-layouts
       Unocss(),
       Icons({ compiler: 'vue3' }),
+      UniPolyfill,
       AutoImport,
       Components,
-      UniVueUsePolyfill,
       Uni(),
       UniPlatformModifier(),
       UniEcharts(),
-
     ],
     clearScreen: true,
-    optimizeDeps: {
-      exclude: process.env.UNI_PLATFORM === 'h5' && process.env.NODE_ENV === 'development' ? ['wot-design-uni'] : [],
-    },
     server: {
       port: Number(VITE_DEV_PORT),
       host: true, // host设置为true才可以使用network的形式，以ip访问项目
@@ -58,8 +56,7 @@ export default defineConfig(({ mode }) => {
     },
     resolve: {
       alias: {
-        '~': resolve(__dirname, './src'), // 路径别名
-        '~uni': resolve(__dirname, './src/uni_modules'), // 路径别名
+        '~': resolve(__dirname, './src'),
       },
     },
     css: {
@@ -69,7 +66,8 @@ export default defineConfig(({ mode }) => {
       },
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "nutui-uniapp/styles/variables.scss";',
+          api: 'modern-compiler',
+          silenceDeprecations: ['legacy-js-api'],
         },
       },
       postcss: {

@@ -1,5 +1,5 @@
 import type { UseInfiniteData, UseInfiniteScrollOptions } from 'vue-hooks-plus/lib/useInfiniteScroll/types'
-import { useInfiniteScroll } from 'vue-hooks-plus'
+import useInfiniteScroll from 'vue-hooks-plus/es/useInfiniteScroll'
 
 export type AutoLoadDataOptions<P extends Record<string, any>, R extends UseInfiniteData> = {
   defaultParams: Partial<P>
