@@ -1,7 +1,7 @@
 import { oiijPreset } from '@oiij/unocss-preset'
 import { presetUni } from '@uni-helper/unocss-preset-uni'
 import { presetWot } from '@wot-ui/unocss-preset'
-import { defineConfig, presetAttributify, presetIcons, presetTypography, presetWebFonts, transformerAttributifyJsx, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
+import { defineConfig, presetIcons, presetTypography, presetWebFonts, transformerCompileClass, transformerDirectives, transformerVariantGroup } from 'unocss'
 
 export default defineConfig({
   rules: [
@@ -12,11 +12,8 @@ export default defineConfig({
   },
   presets: [
     presetUni({
-      attributify: {
-        ignoreAttributes: ['border'],
-      },
+      attributify: false,
     }),
-    presetAttributify({}),
     presetIcons({
       scale: 1.2,
       warn: true,
@@ -40,7 +37,6 @@ export default defineConfig({
   transformers: [
     transformerDirectives(),
     transformerVariantGroup(),
-    transformerAttributifyJsx(),
     transformerCompileClass(),
   ],
 })

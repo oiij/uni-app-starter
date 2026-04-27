@@ -20,6 +20,8 @@ const wdNotify = useWdNotify()
       <WdCell title="wdToast" clickable @click="() => wdToast.show('WotDesign Toast')" />
       <WdCell title="wdNotify" clickable @click="() => wdNotify.showNotify({ message: 'WotDesign Notify', position: 'bottom' })" />
     </WdCellGroup>
+    <WdButton>WotDesign Button</WdButton>
+    <WdCalendar type="daterange" />
   </div>
 </template>
 

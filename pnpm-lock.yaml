@@ -123,6 +123,9 @@ importers:
       '@oiij/unocss-preset':
         specifier: ^0.0.1
         version: 0.0.1
+      '@uni-helper/plugin-uni':
+        specifier: ^0.1.0
+        version: 0.1.0(@dcloudio/vite-plugin-uni@3.0.0-alpha-5000720260416001(@vueuse/core@14.2.1(vue@3.4.21(typescript@6.0.3)))(postcss@8.5.10)(rollup@4.59.0)(vite@5.2.8(@types/node@25.6.0)(less@4.6.4)(lightningcss@1.32.0)(sass@1.99.0)(terser@5.46.1))(vue@3.4.21(typescript@6.0.3)))
       '@uni-helper/unh':
         specifier: ^0.3.1
         version: 0.3.1
@@ -150,6 +153,9 @@ importers:
       '@uni-helper/vite-plugin-uni-platform-modifier':
         specifier: ^0.0.2
         version: 0.0.2
+      '@uni-helper/volar-service-uni-pages':
+        specifier: ^0.3.24
+        version: 0.3.24
       '@unocss-applet/reset':
         specifier: ^0.12.2
         version: 0.12.2
@@ -165,12 +171,6 @@ importers:
       '@vue-hooks-plus/resolvers':
         specifier: ^1.3.0
         version: 1.3.0(vue-hooks-plus@2.4.3(vue@3.4.21(typescript@6.0.3)))
-      '@vue/runtime-core':
-        specifier: 3.4.21
-        version: 3.4.21
-      '@vue/shared':
-        specifier: 3.4.21
-        version: 3.4.21
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
@@ -201,6 +201,9 @@ importers:
       lint-staged:
         specifier: ^16.4.0
         version: 16.4.0
+      miniprogram-api-typings:
+        specifier: ^5.1.3
+        version: 5.1.3
       postcss-preset-env:
         specifier: ^11.2.1
         version: 11.2.1(postcss@8.5.10)
@@ -2984,6 +2987,14 @@ packages:
     peerDependencies:
       axios: ^1.5.0
 
+  '@uni-helper/pages-json-schema@0.3.24':
+    resolution: {integrity: sha512-54TXd0ns5nMcRrgif10gmNWp5EtFLQPAH93zYkJBa6hXZFdnG6dFRuAV0ysJCiGbM2Z6AiPe19gi5+0hqB2CKw==}
+
+  '@uni-helper/plugin-uni@0.1.0':
+    resolution: {integrity: sha512-hBPUjoQc/SgqKsyGUl0fJiL+dDwLPhf2es1PJdsXcxHyOujoBP2+D4z5ie+Q72wVwKtTsQSP3tSjww/63JRmbA==}
+    peerDependencies:
+      '@dcloudio/vite-plugin-uni': '*'
+
   '@uni-helper/unh@0.3.1':
     resolution: {integrity: sha512-4oYvzq89DJa8Hg6lgvT9ensHt8RDlTYoImeYE11twAqb6FnJqEIWukhpz7D1eTlUODNhkkcs/MSw9Kclbj9L7A==}
     hasBin: true
@@ -3069,6 +3080,14 @@ packages:
 
   '@uni-helper/vite-plugin-uni-platform-modifier@0.0.2':
     resolution: {integrity: sha512-gMr6XRI0MOJYKyvi9cKNQ6O5rfNhOSnCY54pkNtNz0NK4ivBw32gpmOHM6zO9LW+i5YLFxxmy8Z7PFv1HAT4HA==}
+
+  '@uni-helper/volar-service-uni-pages@0.3.24':
+    resolution: {integrity: sha512-+H20pf//tkDUMt7qAN0UwA3fteLO0H+0CykuP9d4Ptgnc8cInY4eRDGCP336f1NMVYYuy9Gyq5XEq6kqEZ+kNQ==}
+    peerDependencies:
+      '@volar/language-service': ^1.11.1
+    peerDependenciesMeta:
+      '@volar/language-service':
+        optional: true
 
   '@unocss-applet/preset-applet@0.12.2':
     resolution: {integrity: sha512-w4R4lkAUbbZ1f6SXkwhcBmGLjgMmgpKUIsWG92ojfg83+kiaX4ENS47SiadO4SOZEJssE2wflvxkjG0CfUN9rQ==}
@@ -3255,6 +3274,9 @@ packages:
   '@volar/typescript@2.4.28':
     resolution: {integrity: sha512-Ja6yvWrbis2QtN4ClAKreeUZPVYMARDYZl9LMEv1iQ1QdepB6wn0jTRxA9MftYmYa4DQ4k/DaSZpFPUfxl8giw==}
 
+  '@vscode/l10n@0.0.18':
+    resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
+
   '@vue-hooks-plus/resolvers@1.3.0':
     resolution: {integrity: sha512-NkCdj7dT4j/lR7K4tDAvZSmg9LkrGyoo1io1A+jlL0Y9qRbnHK1Fi9EKaCKEJUobmMbLu+YxCdXU6KqEk9F+ng==}
     engines: {node: '>=14'}
@@ -3417,6 +3439,14 @@ packages:
   agent-base@6.0.2:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
+
+  ajv-draft-04@1.0.0:
+    resolution: {integrity: sha512-mv00Te6nmYbRp5DCwclxtt7yV/joXJPGS7nM+97GdxvuttCOfgI3K4U25zboyeX0O+myI8ERluxQe5wljMmVIw==}
+    peerDependencies:
+      ajv: ^8.5.0
+    peerDependenciesMeta:
+      ajv:
+        optional: true
 
   ajv@6.14.0:
     resolution: {integrity: sha512-IWrosm/yrn43eiKqkfkHis7QioDleaXQHdDVPKg0FSwwd/DuvyX79TZnFOnYpB7dcsFAMmtFztZuXPDvSePkFw==}
@@ -6150,6 +6180,9 @@ packages:
     resolution: {integrity: sha512-tEBHqDnIoM/1rXME1zgka9g6Q2lcoCkxHLuc7ODJ5BxbP5d4c2Z5cGgtXAku59200Cx7diuHTOYfSBD8n6mm8A==}
     engines: {node: '>=16 || 14 >=14.17'}
 
+  miniprogram-api-typings@5.1.3:
+    resolution: {integrity: sha512-qU9YqepEvUJ8wcqw3Kku2hPBN8IuSQjbhnIlkm/8GVyP7WftTboc6fC68AVoc/TfOSfugotMg5XknQhH2J8/kg==}
+
   minizlib@2.1.2:
     resolution: {integrity: sha512-bAxsR8BVfj60DWXHE3u30oHzfl4G7khkSuPW+qvpd7jFRHm7dLxOjUk1EHACJ/hxLY8phGJ0YhYHZo7jil7Qdg==}
     engines: {node: '>= 8'}
@@ -7001,6 +7034,9 @@ packages:
   regjsparser@0.13.1:
     resolution: {integrity: sha512-dLsljMd9sqwRkby8zhO1gSg3PnJIBFid8f4CQj/sXx+7cKx+E7u0PKhZ+U4wmhx7EfmtvnA318oVaIkAB1lRJw==}
     hasBin: true
+
+  request-light@0.5.8:
+    resolution: {integrity: sha512-3Zjgh+8b5fhRJBQZoy+zbVKpAQGLyka0MPgW3zruTF4dFFJ8Fqcfu9YsAvi/rvdcaTeWG3MkbZv4WKxAn/84Lg==}
 
   request-promise-core@1.1.4:
     resolution: {integrity: sha512-TTbAfBBRdWD7aNNOoVOBH4pN/KigV6LyapYNNlAPA8JwbovRti1E88m3sYAwsLi5ryhPKsE9APwnjFTgdUjTpw==}
@@ -7901,6 +7937,33 @@ packages:
     engines: {node: '>=6.0'}
     hasBin: true
 
+  vscode-json-languageservice@4.1.8:
+    resolution: {integrity: sha512-0vSpg6Xd9hfV+eZAaYN63xVVMOTmJ4GgHxXnkLCh+9RsQBkWKIghzLhW2B9ebfG+LQQg8uLtsQ2aUKjTgE+QOg==}
+    engines: {npm: '>=7.0.0'}
+
+  vscode-json-languageservice@5.7.2:
+    resolution: {integrity: sha512-WtKRDtJfFEmLrgtu+ODexOHm/6/krRF0k6t+uvkKIKW1Jh9ZIyxZQwJJwB3qhrEgvAxa37zbUg+vn+UyUK/U2w==}
+
+  vscode-jsonrpc@8.2.0:
+    resolution: {integrity: sha512-C+r0eKJUIfiDIfwJhria30+TYWPtuHJXHtI7J0YlOmKAo7ogxP20T0zxB7HZQIFhIyvoBPwWskjxrvAtfjyZfA==}
+    engines: {node: '>=14.0.0'}
+
+  vscode-languageserver-protocol@3.17.5:
+    resolution: {integrity: sha512-mb1bvRJN8SVznADSGWM9u/b07H7Ecg0I3OgXDuLdn307rl/J3A9YD6/eYOssqhecL27hK1IPZAsaqh00i/Jljg==}
+
+  vscode-languageserver-textdocument@1.0.12:
+    resolution: {integrity: sha512-cxWNPesCnQCcMPeenjKKsOCKQZ/L6Tv19DTRIGuLWe32lyzWhihGVJ/rcckZXJxfdKCFvRLS3fpBIsV/ZGX4zA==}
+
+  vscode-languageserver-types@3.17.5:
+    resolution: {integrity: sha512-Ld1VelNuX9pdF39h2Hgaeb5hEZM2Z3jUrrMgWQAu82jMtZp7p3vJT3BzToKtZI7NgQssZje5o0zryOrhQvzQAg==}
+
+  vscode-languageserver@9.0.1:
+    resolution: {integrity: sha512-woByF3PDpkHFUreUa7Hos7+pUWdeWMXRd26+ZX2A8cFx6v/JPTtd4/uN0/jB6XQHYaOlHbio03NTHCqrgG5n7g==}
+    hasBin: true
+
+  vscode-nls@5.2.0:
+    resolution: {integrity: sha512-RAaHx7B14ZU04EU31pT+rKz2/zSl7xMsfIZuo8pd+KZO6PXtQmpevpq3vxvWNcrGbdmhM/rr5Uw5Mz+NBfhVng==}
+
   vscode-uri@3.1.0:
     resolution: {integrity: sha512-/BpdSx+yCQGnCvecbyXdxHDkuk55/G3xwnC0GqY4gmQ3j+A+g8kzzgB4Nk/SINjqn6+waqw3EgbVF2QKExkRxQ==}
 
@@ -8106,6 +8169,10 @@ packages:
   yaml-eslint-parser@2.0.0:
     resolution: {integrity: sha512-h0uDm97wvT2bokfwwTmY6kJ1hp6YDFL0nRHwNKz8s/VD1FH/vvZjAKoMUE+un0eaYBSG7/c6h+lJTP+31tjgTw==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
+
+  yaml-language-server@1.22.0:
+    resolution: {integrity: sha512-1vGi3FL1B8WiKHwNADotG+CGl4S55q8ZEqKRWIACu/slJC32MBBORWZpzBFB6r9vrmI3cXsLmD5DRAxAvgqBSw==}
+    hasBin: true
 
   yaml@1.10.3:
     resolution: {integrity: sha512-vIYeF1u3CjlhAFekPPAk2h/Kv4T3mAkMox5OymRiJQB0spDP10LHvt+K7G9Ny6NuuMAb25/6n1qyUjAcGNf/AA==}
@@ -11834,6 +11901,12 @@ snapshots:
       local-pkg: 0.5.1
       unplugin: 1.16.1
 
+  '@uni-helper/pages-json-schema@0.3.24': {}
+
+  '@uni-helper/plugin-uni@0.1.0(@dcloudio/vite-plugin-uni@3.0.0-alpha-5000720260416001(@vueuse/core@14.2.1(vue@3.4.21(typescript@6.0.3)))(postcss@8.5.10)(rollup@4.59.0)(vite@5.2.8(@types/node@25.6.0)(less@4.6.4)(lightningcss@1.32.0)(sass@1.99.0)(terser@5.46.1))(vue@3.4.21(typescript@6.0.3)))':
+    dependencies:
+      '@dcloudio/vite-plugin-uni': 3.0.0-alpha-5000720260416001(@vueuse/core@14.2.1(vue@3.4.21(typescript@6.0.3)))(postcss@8.5.10)(rollup@4.59.0)(vite@5.2.8(@types/node@25.6.0)(less@4.6.4)(lightningcss@1.32.0)(sass@1.99.0)(terser@5.46.1))(vue@3.4.21(typescript@6.0.3))
+
   '@uni-helper/unh@0.3.1':
     dependencies:
       '@uni-helper/uni-env': 0.2.0
@@ -11985,6 +12058,13 @@ snapshots:
       '@vue/compiler-dom': 3.5.32
       fast-glob: 3.3.3
       magic-string: 0.30.21
+
+  '@uni-helper/volar-service-uni-pages@0.3.24':
+    dependencies:
+      '@uni-helper/pages-json-schema': 0.3.24
+      vscode-json-languageservice: 5.7.2
+      vscode-languageserver-textdocument: 1.0.12
+      yaml-language-server: 1.22.0
 
   '@unocss-applet/preset-applet@0.12.2':
     dependencies:
@@ -12277,6 +12357,8 @@ snapshots:
       path-browserify: 1.0.1
       vscode-uri: 3.1.0
 
+  '@vscode/l10n@0.0.18': {}
+
   '@vue-hooks-plus/resolvers@1.3.0(vue-hooks-plus@2.4.3(vue@3.4.21(typescript@6.0.3)))':
     dependencies:
       local-pkg: 0.4.3
@@ -12508,6 +12590,10 @@ snapshots:
       debug: 4.4.3
     transitivePeerDependencies:
       - supports-color
+
+  ajv-draft-04@1.0.0(ajv@8.18.0):
+    optionalDependencies:
+      ajv: 8.18.0
 
   ajv@6.14.0:
     dependencies:
@@ -15805,6 +15891,8 @@ snapshots:
 
   minipass@7.1.3: {}
 
+  miniprogram-api-typings@5.1.3: {}
+
   minizlib@2.1.2:
     dependencies:
       minipass: 3.3.6
@@ -16757,6 +16845,8 @@ snapshots:
   regjsparser@0.13.1:
     dependencies:
       jsesc: 3.1.0
+
+  request-light@0.5.8: {}
 
   request-promise-core@1.1.4(request@2.88.2):
     dependencies:
@@ -17753,6 +17843,39 @@ snapshots:
       acorn: 8.16.0
       acorn-walk: 8.3.5
 
+  vscode-json-languageservice@4.1.8:
+    dependencies:
+      jsonc-parser: 3.3.1
+      vscode-languageserver-textdocument: 1.0.12
+      vscode-languageserver-types: 3.17.5
+      vscode-nls: 5.2.0
+      vscode-uri: 3.1.0
+
+  vscode-json-languageservice@5.7.2:
+    dependencies:
+      '@vscode/l10n': 0.0.18
+      jsonc-parser: 3.3.1
+      vscode-languageserver-textdocument: 1.0.12
+      vscode-languageserver-types: 3.17.5
+      vscode-uri: 3.1.0
+
+  vscode-jsonrpc@8.2.0: {}
+
+  vscode-languageserver-protocol@3.17.5:
+    dependencies:
+      vscode-jsonrpc: 8.2.0
+      vscode-languageserver-types: 3.17.5
+
+  vscode-languageserver-textdocument@1.0.12: {}
+
+  vscode-languageserver-types@3.17.5: {}
+
+  vscode-languageserver@9.0.1:
+    dependencies:
+      vscode-languageserver-protocol: 3.17.5
+
+  vscode-nls@5.2.0: {}
+
   vscode-uri@3.1.0: {}
 
   vue-component-type-helpers@2.2.12: {}
@@ -17957,6 +18080,19 @@ snapshots:
   yaml-eslint-parser@2.0.0:
     dependencies:
       eslint-visitor-keys: 5.0.1
+      yaml: 2.8.3
+
+  yaml-language-server@1.22.0:
+    dependencies:
+      '@vscode/l10n': 0.0.18
+      ajv: 8.18.0
+      ajv-draft-04: 1.0.0(ajv@8.18.0)
+      request-light: 0.5.8
+      vscode-json-languageservice: 4.1.8
+      vscode-languageserver: 9.0.1
+      vscode-languageserver-textdocument: 1.0.12
+      vscode-languageserver-types: 3.17.5
+      vscode-uri: 3.1.0
       yaml: 2.8.3
 
   yaml@1.10.3: {}

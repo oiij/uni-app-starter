@@ -1,7 +1,7 @@
 import type { UserConfig } from 'vite'
 import { resolve } from 'node:path'
 import process from 'node:process'
-import uniModule from '@dcloudio/vite-plugin-uni'
+import Uni from '@uni-helper/plugin-uni'
 import UniHelperLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniHelperManifest from '@uni-helper/vite-plugin-uni-manifest'
 import UniHelperPages from '@uni-helper/vite-plugin-uni-pages'
@@ -18,9 +18,7 @@ import { AutoImport, Components } from './plugins'
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const { VITE_DEV_PORT, VITE_API_BASE_PREFIX, VITE_API_BASE_URL } = loadEnv(mode, process.cwd(), '')
-  // eslint-disable-next-line ts/ban-ts-comment
-  // @ts-expect-error
-  const Uni = uniModule.default || uniModule
+
   return {
     plugins: [
       UniHelperManifest(), // https://uni-helper.js.org/vite-plugin-uni-manifest
@@ -30,7 +28,7 @@ export default defineConfig(({ mode }) => {
       UniHelperLayouts(), // https://uni-helper.js.org/vite-plugin-uni-layouts
       Unocss(),
       Icons({ compiler: 'vue3' }),
-      UniPolyfill,
+      UniPolyfill(),
       AutoImport,
       Components,
       Uni(),
