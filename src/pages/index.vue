@@ -9,10 +9,14 @@ definePage({
 })
 const wdToast = useWdToast()
 const wdNotify = useWdNotify()
+const totalRef = ref(0)
+setInterval(() => {
+  totalRef.value++
+}, 1000)
 </script>
 
 <template>
-  <WdNavbar safe-area-inset-top title="WotDesignUni" />
+  <WdNavbar safe-area-inset-top title="WotUi" />
   <WdToast />
   <WdNotify />
   <div class="flex-col gap-[10px] p-[10px]">
@@ -21,7 +25,11 @@ const wdNotify = useWdNotify()
       <WdCell title="wdNotify" clickable @click="() => wdNotify.showNotify({ message: 'WotDesign Notify', position: 'bottom' })" />
     </WdCellGroup>
     <WdButton>WotDesign Button</WdButton>
-    <WdCalendar type="daterange" />
+  </div>
+  <div class="p-3">
+    <WdTag round>
+      total:{{ totalRef }}
+    </WdTag>
   </div>
 </template>
 
