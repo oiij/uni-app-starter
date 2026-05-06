@@ -4,8 +4,11 @@ export default antfu({
   unocss: true,
   formatters: true,
   vue: {
-    componentNameCasing: 'PascalCase',
-    // ignores: ['scroll-view', 'vertical-drag-gesture-handler', 'pan-gesture-handler'],
+    overrides: {
+      'vue/component-name-in-template-casing': ['error', 'PascalCase', {
+        registeredComponentsOnly: false,
+      }],
+    },
   },
   rules: {
     'ts/consistent-type-definitions': ['error', 'type'],
@@ -13,8 +16,6 @@ export default antfu({
     'e18e/prefer-static-regex': ['off'],
   },
   ignores: [
-    'src/manifest.json',
-    'src/pages.json',
-    '**/uni_modules',
+    '.agents',
   ],
 })
