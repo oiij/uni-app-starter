@@ -7,6 +7,7 @@ export default antfu({
     overrides: {
       'vue/component-name-in-template-casing': ['error', 'PascalCase', {
         registeredComponentsOnly: false,
+        ignores: ['radio', 'radio-group'],
       }],
     },
   },
